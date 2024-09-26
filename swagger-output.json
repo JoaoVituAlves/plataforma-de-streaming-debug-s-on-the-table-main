@@ -1,0 +1,476 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API RESTful - Plataforma de Streaming",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    }
+  ],
+  "paths": {
+    "/conteudos/": {
+      "get": {
+        "tags": [
+          "Conteúdos"
+        ],
+        "summary": "Retorna todos os conteúdos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Conteúdos"
+        ],
+        "summary": "Cadastra um conteúdo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/conteudoModel"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Conteúdos"
+        ],
+        "summary": "Altera um conteúdo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/conteudoAlteracaoModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/conteudos/{id}": {
+      "get": {
+        "tags": [
+          "Conteúdos"
+        ],
+        "summary": "Retorna um conteúdo através do id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Conteúdos"
+        ],
+        "summary": "Deleta um conteúdo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/conteudos/assistir/{id}": {
+      "get": {
+        "tags": [
+          "Conteúdos"
+        ],
+        "summary": "Retorna o vídeo incorporado no HTML",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/conteudos/capa/{id}": {
+      "get": {
+        "tags": [
+          "Conteúdos"
+        ],
+        "summary": "Retorna a capa do vídeo em HTML",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/categorias/": {
+      "get": {
+        "tags": [
+          "Categorias"
+        ],
+        "summary": "Retorna todas as categorias",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/token": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Esquema de segurança para proteger os endpoints",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuarioModel"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "usuarioModel": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "teste@teste.com",
+            "required": true
+          },
+          "senha": {
+            "type": "string",
+            "example": "12345",
+            "required": true
+          }
+        }
+      },
+      "categoriaModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": "1",
+            "required": true
+          }
+        }
+      },
+      "conteudoModel": {
+        "type": "object",
+        "properties": {
+          "youtubeId": {
+            "type": "string",
+            "example": "GDlkCkcIqTs",
+            "required": true
+          },
+          "titulo": {
+            "type": "string",
+            "example": "Título do vídeo",
+            "required": true
+          },
+          "disponivel": {
+            "type": "string",
+            "example": "S",
+            "required": true
+          },
+          "categoria": {
+            "$ref": "#/components/schemas/categoriaModel"
+          }
+        }
+      },
+      "conteudoAlteracaoModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": "1",
+            "required": true
+          },
+          "youtubeId": {
+            "type": "string",
+            "example": "GDlkCkcIqTs",
+            "required": true
+          },
+          "titulo": {
+            "type": "string",
+            "example": "Título do vídeo",
+            "required": true
+          },
+          "disponivel": {
+            "type": "string",
+            "example": "S",
+            "required": true
+          },
+          "categoria": {
+            "$ref": "#/components/schemas/categoriaModel"
+          }
+        }
+      }
+    }
+  }
+}
