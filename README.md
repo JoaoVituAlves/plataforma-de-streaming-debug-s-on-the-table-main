@@ -9,7 +9,7 @@ Para fazer o gerenciamento de conteúdos (CRUD) nosso backend utilizará o segui
 ![Image](bd.png)
 
 ## Como cadastrar os conteúdos com vídeos do Youtube
-A coluna con_youtubeid deverá armazenar o id do vídeo no YouTube, com esse id iremos conseguir gerar a imagem de capa do nosso conteúdo e também incorporar o vídeo quando o usuário clicar em ‘Assistir’. O id acima representa o parâmetro na url que o YouTube utiliza para disponibilizar os conteúdos em seu site. Por exemplo, veja seguinte URL abaixo:
+A coluna con_youtubeid deverá armazenar o id do vídeo no YouTube, com esse id iremos conseguir gerar a imagem de capa do nosso conteúdo e também incorporar o vídeo quando o usuário clicar em ‘Assistir’. O id acima representa o parâmetro na url que o YouTube utiliza para disponibilizar os conteúdos em seu site. Por exemplo, veja seguinte URL abaixo:-
 
 https://www.youtube.com/watch?v=GDlkCkcIqTs
 A rota /watch recebe via query string no parâmetro ‘v’ um valor. Esse valor (em negrito) é o id do nosso vídeo que será armazenado no nosso banco de dados.
